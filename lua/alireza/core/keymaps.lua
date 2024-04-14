@@ -35,3 +35,4 @@ keymap.set("n", "<leader><CR>", ":so ~/.config/nvim/init.lua<CR>", { desc = "Rel
 
 keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move down selected chunk" }) -- Move down selected chunk
 keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move up selected chunk" }) -- Move up selected chunk
+

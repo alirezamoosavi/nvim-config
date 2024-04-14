@@ -11,7 +11,7 @@ opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
 
 -- line wrapping
-opt.wrap = false -- disable line wrapping
+opt.wrap = true -- disable line wrapping
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
@@ -31,9 +31,6 @@ opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 -- backspace
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
--- clipboard
-opt.clipboard:append("unnamedplus") -- use system clipboard as default register
-
 -- split windows
 opt.splitright = true -- split vertical window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
@@ -46,3 +43,47 @@ opt.termbidi = true -- support arabic and persian language
 
 opt.foldmethod = "indent"
 opt.foldlevel = 99
+
+opt.fileformat = "unix"
+
+opt.nu = true
+opt.softtabstop = 4
+
+opt.smartindent = true
+
+opt.undofile = true
+opt.undolevels = 30000
+
+opt.hlsearch = true
+opt.incsearch = true
+
+opt.scrolloff = 8
+opt.isfname:append("@-@")
+
+opt.updatetime = 50
+
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+opt.autowrite = true -- Enable auto write
+opt.completeopt = "menu,menuone,noselect"
+opt.clipboard = "unnamedplus" -- Sync with system clipboard
+
+opt.wildmode = "longest:full,full" -- Command-line completion mode
+opt.spelllang = { "en" }
+opt.showmode = false
+opt.shortmess:append({ W = true, I = true, c = true })
+opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+opt.pumblend = 10 -- Popup blend
+opt.pumheight = 10 -- Maximum number of entries in a popup
+opt.inccommand = "nosplit" -- preview incremental substitute
+opt.laststatus = 0
+opt.list = true -- Show some invisible characters (tabs...
+opt.mouse = "a" -- Enable mouse mode
+opt.formatoptions = "jcroqlnt" -- tcqj
+opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg = "rg --vimgrep"
+
+--vim.g.markdown_recommended_style = 0
+
+vim.opt.formatoptions:remove({ "c", "r", "o" })

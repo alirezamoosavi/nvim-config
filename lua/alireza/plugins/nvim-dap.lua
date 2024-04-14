@@ -3,6 +3,8 @@ return {
 	dependencies = { -- optional packages
 		"mfussenegger/nvim-dap",
 		"folke/neodev.nvim",
+		"nvim-neotest/nvim-nio",
+		"theHamsta/nvim-dap-virtual-text",
 	},
 	config = function()
 		require("dapui").setup()
