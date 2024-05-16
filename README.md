@@ -35,7 +35,7 @@ mv ~/.cache/nvim ~/.cache/nvim.bak
 #### Clone the template repository
 
 ```shell
-git clone --depth 1 https://github.com/test/template ~/.config/nvim
+git clone --depth 1 https://github.com/alirezamoosavi/nvim-config ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 nvim
 ```
