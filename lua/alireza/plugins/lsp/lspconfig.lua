@@ -85,23 +85,23 @@ return {
 			debounce_text_changes = 150,
 		}
 
-		-- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
-		local omnisharp_bin = "/home/alireza/.local/share/nvim/mason/packages/omnisharp/omnisharp"
-		-- configure C# server
-		lspconfig["omnisharp"].setup({
-			handlers = {
-				["textDocument/definition"] = require("omnisharp_extended").handler,
-			},
-			cmd = { omnisharp_bin },
-			on_attach = on_attach,
-			flags = lsp_flags,
-			capabilities = capabilities,
-			enable_roslyn_analysers = true,
-			enable_import_completion = true,
-			organize_imports_on_format = true,
-			enable_decompilation_support = true,
-			filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props", "csx", "props", "targets" },
-		})
+		-- -- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
+		-- local omnisharp_bin = "/home/alireza/.local/share/nvim/mason/packages/omnisharp/OmniSharp"
+		-- -- configure C# server
+		-- lspconfig["omnisharp"].setup({
+		-- 	handlers = {
+		-- 		["textDocument/definition"] = require("omnisharp_extended").handler,
+		-- 	},
+		-- 	cmd = { omnisharp_bin },
+		-- 	on_attach = on_attach,
+		-- 	flags = lsp_flags,
+		-- 	capabilities = capabilities,
+		-- 	enable_roslyn_analysers = true,
+		-- 	enable_import_completion = true,
+		-- 	organize_imports_on_format = true,
+		-- 	enable_decompilation_support = true,
+		-- 	filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props", "csx", "props", "targets" },
+		-- })
 
 		-- configure html server
 		lspconfig["html"].setup({
@@ -136,6 +136,7 @@ return {
 		lspconfig["tailwindcss"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			filetypes = { "svelte", "html", "cshtml" },
 		})
 
 		-- configure python server

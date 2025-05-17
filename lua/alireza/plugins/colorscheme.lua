@@ -41,6 +41,8 @@ return {
 				end,
 			})
 			-- load the colorscheme here
+      --
+		 vim.cmd.colorscheme("tokyonight-moon");
 			-- vim.cmd([[colorscheme moonfly]])
 		end,
 	},
@@ -65,7 +67,7 @@ return {
 		"LunarVim/lunar.nvim",
 		-- event = "VeryLazy",
 		config = function()
-			vim.cmd.colorscheme("lunar")
+			-- vim.cmd.colorscheme("lunar")
 		end,
 	},
 	{
