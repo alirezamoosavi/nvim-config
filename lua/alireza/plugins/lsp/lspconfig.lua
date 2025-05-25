@@ -8,9 +8,6 @@ return {
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	config = function()
-		-- import lspconfig plugin
-		local lspconfig = require("lspconfig")
-
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
@@ -88,7 +85,7 @@ return {
 		-- -- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
 		-- local omnisharp_bin = "/home/alireza/.local/share/nvim/mason/packages/omnisharp/OmniSharp"
 		-- -- configure C# server
-		-- lspconfig["omnisharp"].setup({
+		-- vim.lsp.config("omnisharp",{
 		-- 	handlers = {
 		-- 		["textDocument/definition"] = require("omnisharp_extended").handler,
 		-- 	},
@@ -103,50 +100,50 @@ return {
 		-- 	filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props", "csx", "props", "targets" },
 		-- })
 
-		-- configure html server
-		lspconfig["html"].setup({
+    vim.lsp.config('html',{
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
+		-- configure html server
 
-		lspconfig["emmet_ls"].setup({
+		vim.lsp.config("emmet_ls",{
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 		-- configure typescript server with plugin
-		lspconfig["ts_ls"].setup({
+		vim.lsp.config("ts_ls",{
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure svelte server
-		lspconfig["svelte"].setup({
+		vim.lsp.config("svelte",{
 			capabilities = capabilities,
 			on_attach = on_attach,
 			require("lsp_signature").on_attach(),
 		})
 
 		-- configure css server
-		lspconfig["cssls"].setup({
+		vim.lsp.config("cssls",{
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure tailwindcss server
-		lspconfig["tailwindcss"].setup({
+		vim.lsp.config("tailwindcss",{
 			capabilities = capabilities,
 			on_attach = on_attach,
 			filetypes = { "svelte", "html", "cshtml" },
 		})
 
 		-- configure python server
-		lspconfig["pyright"].setup({
+		vim.lsp.config("pyright",{
 			capabilities = capabilities,
 			on_attach = on_attach,
 		})
 
 		-- configure golang server
-		lspconfig["gopls"].setup({
+		vim.lsp.config("gopls",{
 			on_attach = on_attach,
 			-- capabilities = cap,
 			message_level = vim.lsp.protocol.MessageType.Error,
@@ -200,7 +197,7 @@ return {
 		})
 
 		-- configure lua server (with special settings)
-		lspconfig["lua_ls"].setup({
+		vim.lsp.config("lua_ls",{
 			capabilities = capabilities,
 			on_attach = on_attach,
 			settings = { -- custom settings for lua
@@ -226,7 +223,7 @@ return {
 			"jsonls",
 		}
 		for _, lsp in ipairs(servers) do
-			lspconfig[lsp].setup({
+			vim.lsp.config(lsp,{
 				on_attach = on_attach,
 				require("lsp_signature").on_attach(),
 				flags = lsp_flags,
