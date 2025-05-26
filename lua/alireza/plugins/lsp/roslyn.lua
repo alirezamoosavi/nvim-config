@@ -4,13 +4,9 @@ return {
 	---@type RoslynNvimConfig
 	---
 	dependencies = {
-
-		"hrsh7th/cmp-nvim-lsp",
+    'saghen/blink.cmp',
 	},
 	config = function()
-		-- import cmp-nvim-lsp plugin
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-
 		local keymap = vim.keymap -- for conciseness
 
 		local opts = { noremap = true, silent = true }
@@ -62,7 +58,7 @@ return {
 		end
 
 		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = cmp_nvim_lsp.default_capabilities()
+		local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		require("roslyn").setup({
