@@ -1,60 +1,159 @@
 return {
-  "nvim-tree/nvim-tree.lua",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-  config = function()
-    local nvimtree = require("nvim-tree")
+	"nvim-neo-tree/neo-tree.nvim",
+	branch = "v3.x",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-tree/nvim-web-devicons",
+		"MunifTanjim/nui.nvim",
+	},
+	keys = {
+		{ "<leader>ee", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
+		{
+			"<leader>gs",
+			function()
+				require("neo-tree.command").execute({
+					source = "git_status",
+					position = "float",
+					toggle = true,
+				})
+			end,
+			desc = "Toggle Git Status (float)",
+		},
+	},
+	config = function()
+		require("neo-tree").setup({
+			close_if_last_window = true,
+			popup_border_style = "rounded",
+			enable_git_status = true,
+			enable_diagnostics = true,
+			sort_case_insensitive = true,
+			default_component_configs = {
+				container = {
+					enable_character_fade = true,
+				},
+				indent = {
+					indent_size = 2,
+					padding = 1,
+					with_markers = true,
+					indent_marker = "│",
+					last_indent_marker = "└",
+					highlight = "NeoTreeIndentMarker",
+					with_expanders = nil,
+					expander_collapsed = "",
+					expander_expanded = "",
+					expander_highlight = "NeoTreeExpander",
+				},
+				icon = {
+					folder_closed = "",
+					folder_open = "",
+					folder_empty = "ﰊ",
+					default = "",
+					highlight = "NeoTreeFileIcon",
+				},
+				modified = {
+					symbol = "[+]",
+					highlight = "NeoTreeModified",
+				},
+				name = {
+					trailing_slash = false,
+					use_git_status_colors = true,
+					highlight = "NeoTreeFileName",
+				},
+				git_status = {
+					symbols = {
+						added = "",
+						modified = "",
+						deleted = "",
+						renamed = "➜",
+						untracked = "★",
+						ignored = "◌",
+						unstaged = "✗",
+						staged = "✓",
+						conflict = "",
+					},
+				},
+			},
+			window = {
+				position = "left",
+				width = 30,
+				mappings = {
+					["<space>"] = "toggle_node",
+					["<2-LeftMouse>"] = "open",
+					["<cr>"] = "open",
+					["S"] = "open_split",
+					["s"] = "open_vsplit",
+					["t"] = "open_tabnew",
+					["C"] = "close_node",
+					["a"] = "add",
+					["d"] = "delete",
+					["r"] = "rename",
+					["y"] = "copy_to_clipboard",
+					["x"] = "cut_to_clipboard",
+					["p"] = "paste_from_clipboard",
+					["c"] = "copy",
+					["m"] = "move",
+					["q"] = "close_window",
+					["R"] = "refresh",
+					["?"] = "show_help",
+				},
+			},
+			nesting_rules = {},
+			filesystem = {
+				filtered_items = {
+					visible = false,
+					hide_dotfiles = false,
+					hide_gitignored = false,
+					hide_by_name = {
+						"node_modules",
+					},
+					never_show = {
+						".DS_Store",
+						"thumbs.db",
+					},
+				},
+				follow_current_file = {
+					enabled = true,
+				},
+				hijack_netrw_behavior = "open_default",
+				use_libuv_file_watcher = true,
+			},
+			buffers = {
+				show_unloaded = true,
+				window = {
+					mappings = {
+						["bd"] = "buffer_delete",
+					},
+				},
+			},
+			git_status = {
+				window = {
+					position = "float",
+					mappings = {
+						-- عملیات پایه Git
+						["ga"] = "git_add_file", -- افزودن فایل
+						["gu"] = "git_unstage_file", -- حذف از stage
+						["gr"] = "git_revert_file", -- بازگردانی تغییرات
+						["gc"] = "git_commit", -- کامیت
+						["gp"] = "git_push", -- پوش
+						["gg"] = "git_commit_and_push", -- کامیت و پوش همزمان
 
-    -- recommended settings from nvim-tree documentation
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
+						-- عملیات پیشرفته
+						["A"] = "git_add_all", -- افزودن همه تغییرات
+						["U"] = "git_unstage_all", -- حذف همه از stage
+						["D"] = "git_discard", -- دور انداختن تغییرات
+						["dv"] = "diffview_open", -- باز کردن diffview
+						["ds"] = "git_show", -- نمایش تغییرات
 
-    -- change color for arrows in tree to light blue
-    vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
+						-- مدیریت branch
+						["gb"] = "git_branch_create", -- ایجاد branch جدید
+						["gs"] = "git_branch_switch", -- سوئیچ بین branchها
 
-    -- configure nvim-tree
-    nvimtree.setup({
-      view = {
-        width = 35,
-        relativenumber = true,
-      },
-      -- change folder arrow icons
-      renderer = {
-        indent_markers = {
-          enable = true
-        },
-        icons = {
-          glyphs = {
-            folder = {
-              arrow_closed = "", -- arrow when folder is closed
-              arrow_open = "", -- arrow when folder is open
-            },
-          },
-        },
-      },
-      -- disable window_picker for
-      -- explorer to work well with
-      -- window splits
-      actions = {
-        open_file = {
-          window_picker = {
-            enable = false,
-          },
-        },
-      },
-      filters = {
-        custom = { ".DS_Store" },
-      },
-      git = {
-        ignore = true,
-      },
-    })
-
-    -- set keymaps
-    local keymap = vim.keymap -- for conciseness
-
-    keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
-    keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
-    keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
-    keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
-  end,
+						-- عملیات stash
+						["gt"] = "git_stash_push", -- ذخیره تغییرات در stash
+						["gl"] = "git_stash_pop", -- بازیابی آخرین stash
+					},
+				},
+			},
+		})
+	end,
 }
