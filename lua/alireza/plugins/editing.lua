@@ -58,38 +58,12 @@ return {
 		end,
 	},
 	{
-		"tpope/vim-surround",
-		event = "VeryLazy",
-	},
-	-- {
-	-- 	'kosayoda/nvim-lightbulb',
-	-- 	event = "VeryLazy",
-	-- 	config = function()
-	-- 		require('nvim-lightbulb').setup({
-	-- 			autocmd = { enabled = true }
-	-- 		})
-	-- 	end
-	-- },
-	{
 		"chentoast/marks.nvim",
 		event = "VeryLazy",
 		config = function()
 			require("marks").setup({})
 		end,
 	},
-	-- {
-	-- 	'HiPhish/nvim-ts-rainbow2',
-	-- 	event = { "BufReadPre", "BufNewFile" },
-	-- 	-- event = "VeryLazy",
-	-- 	config = function()
-	-- 		require('nvim-treesitter.configs').setup({
-	-- 			rainbow = {
-	-- 				enable = true,
-	-- 				extended_mode = true,
-	-- 			}
-	-- 		})
-	-- 	end
-	-- },
 	{
 		"tzachar/local-highlight.nvim",
 		dependencies = {
