@@ -40,7 +40,7 @@ return {
 						schema = {
 							model = {
 								-- default = "gemma3:12b",
-								default = "qwen2.5-coder:32b",
+								default = "qwen3:30b",
 							},
 						},
 						parameters = {
