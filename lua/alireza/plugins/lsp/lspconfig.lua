@@ -5,7 +5,7 @@ return {
 		"saghen/blink.cmp",
     "seblyng/roslyn.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		"Hoffs/omnisharp-extended-lsp.nvim",
+		-- "Hoffs/omnisharp-extended-lsp.nvim",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	config = function()
