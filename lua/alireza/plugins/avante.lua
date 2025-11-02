@@ -2,7 +2,7 @@ return {
 	"yetone/avante.nvim",
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 	-- ⚠️ must add this setting! ! !
-  build = "make",
+	build = "make",
 	event = "VeryLazy",
 	version = false, -- Never set this value to "*"! Never!
 	---@module 'avante'
@@ -30,7 +30,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
 		--- The below dependencies are optional,
-		"echasnovski/mini.pick", -- for file_selector provider mini.pick
+		"nvim-mini/mini.pick", -- for file_selector provider mini.pick
 		"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
 		"ibhagwan/fzf-lua", -- for file_selector provider fzf
 		"stevearc/dressing.nvim", -- for input provider dressing
@@ -48,8 +48,6 @@ return {
 					drag_and_drop = {
 						insert_mode = true,
 					},
-					-- required for Windows users
-					use_absolute_path = true,
 				},
 			},
 		},
