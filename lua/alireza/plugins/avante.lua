@@ -10,11 +10,18 @@ return {
 	opts = {
 		-- add any opts here
 		-- for example
-		provider = "ollama",
+		provider = "localai",
+		-- Configuration for AI providers and input methods
 		providers = {
+			localai = {
+				__inherited_from = "openai",
+				endpoint = "http://10.0.0.12:8080/",
+				model = "qwen3-vl-30b-a3b-instruct",
+        api_key_name = "LocalAi"
+			},
 			ollama = {
-				endpoint = "http://10.0.0.12:11434",
 				model = "qwen3:30b",
+				endpoint = "http://10.0.0.12:11434",
 			},
 		},
 		input = {

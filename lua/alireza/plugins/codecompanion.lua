@@ -7,21 +7,21 @@ return {
 	config = function()
 		local helpers = require("codecompanion.adapters.acp.helpers")
 		require("codecompanion").setup({
-			display = {
-				chat = {
-					-- Change the default icons
-					icons = {
-						buffer_pin = " ",
-						buffer_watch = "👀 ",
-					},
-					-- Options to customize the UI of the chat buffer
-					window = {
-						layout = "float",
-						height = 0.9,
-						width = 0.7,
-					},
-				},
-			},
+			-- display = {
+			-- 	chat = {
+			-- 		-- Change the default icons
+			-- 		icons = {
+			-- 			buffer_pin = " ",
+			-- 			buffer_watch = "👀 ",
+			-- 		},
+			-- 		-- Options to customize the UI of the chat buffer
+			-- 		window = {
+			-- 			layout = "float",
+			-- 			height = 0.9,
+			-- 			width = 0.7,
+			-- 		},
+			-- 	},
+			-- },
 			strategies = {
 				chat = {
 					adapter = "ollama",
@@ -35,10 +35,10 @@ return {
 					},
 				},
 				inline = {
-					adapter = "ollama",
+					adapter = "localai",
 				},
 				cmd = {
-					adapter = "ollama",
+					adapter = "localai",
 				},
 			},
 			adapters = {
@@ -58,6 +58,22 @@ return {
 							},
 						})
 					end,
+          localai = function()
+						return require("codecompanion.adapters").extend("openai_compatible", {
+							env = {
+								url = "http://10.0.0.12:8080",
+							},
+							schema = {
+								model = {
+									default = "qwen3-vl-30b-a3b-instruct",
+								},
+							},
+							parameters = {
+								sync = true,
+							},
+						})
+					end,
+
 				},
 				acp = {
 					goose = function()
