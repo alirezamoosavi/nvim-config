@@ -24,7 +24,7 @@ return {
 			-- },
 			strategies = {
 				chat = {
-					adapter = "ollama",
+					adapter = "llamacpp",
 					opts = {
 						completion_provider = "blink", -- blink
 					},
@@ -35,10 +35,10 @@ return {
 					},
 				},
 				inline = {
-					adapter = "localai",
+					adapter = "llamacpp",
 				},
 				cmd = {
-					adapter = "localai",
+					adapter = "llamacpp",
 				},
 			},
 			adapters = {
@@ -58,10 +58,10 @@ return {
 							},
 						})
 					end,
-          localai = function()
+          llamacpp = function()
 						return require("codecompanion.adapters").extend("openai_compatible", {
 							env = {
-								url = "http://10.0.0.12:8080",
+								url = "http://10.0.0.12:11343",
 							},
 							schema = {
 								model = {
