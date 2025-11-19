@@ -1,45 +1,71 @@
-# Compiled Lua sources
-luac.out
+```
+# Environment
+.env
+.env.local
+.env.*
 
+# Logs and temp files
+*.log
+*.tmp
+*.swp
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+# Editors
+.vscode/
+.idea/
 
-# Object files
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+dist/
+build/
+target/
+.gradle/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Compiled files
+*.pyc
+*.class
 *.o
-*.os
-*.ko
-*.obj
-*.elf
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
-
-# Shared objects (inc. Windows DLLs)
+*.exe
 *.dll
 *.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
+*.a
+*.obj
 *.out
-*.app
-*.i*86
-*.x86_64
-*.hex
 
+# Coverage
+coverage/
+htmlcov/
+.coverage
 
-plugin/packer_compiled.lua
-lazy-lock.json
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+```
