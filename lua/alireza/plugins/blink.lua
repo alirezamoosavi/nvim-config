@@ -89,15 +89,15 @@ return {
 	"Saghen/blink.cmp",
 
 	dependencies = {
-		"Kaiser-Yang/blink-cmp-avante",
+    'rafamadriz/friendly-snippets'
 	},
-	version = "^1", -- make sure to always set version to v1 even on development
+	version = "1.*", -- make sure to always set version to v1 even on development
 	event = { "InsertEnter", "CmdlineEnter" },
 	opts_extend = { "sources.default", "cmdline.sources", "term.sources" },
 	opts = {
 		-- remember to enable your providers here
 		sources = {
-			default = { "avante", "lsp", "path", "snippets", "buffer" },
+			default = { "lsp", "path", "snippets", "buffer" },
 			providers = {
 				avante = {
 					module = "blink-cmp-avante",
