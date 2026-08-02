@@ -1,10 +1,6 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		dependencies = {
-			"windwp/nvim-ts-autotag",
-			-- "hiphish/rainbow-delimiters.nvim"
-		},
 
 		lazy = false,
 		branch = "main",
@@ -66,7 +62,7 @@ return {
 				end
 
 				-- تلاش برای نصب پارسر (اگر نصب نباشد)
-				local ok, task = pcall(ts.install, { lang }, { summary = true })
+				local ok, task = pcall(ts.install, { lang }, { summary = false })
 				if not ok then
 					-- ممکن است زبان پشتیبانی نشود، بدون خطا خارج شو
 					return
@@ -89,22 +85,6 @@ return {
 			-- آن‌ها را به‌صورت جداگانه تنظیم کنید، زیرا دیگر در treesitter تعبیه نشده‌اند.
 			-- مثال برای autotag (با فرض نصب پلاگین windwp/nvim-ts-autotag):
 			-- require("nvim-ts-autotag").setup()
-			require("nvim-ts-autotag").setup({
-				opts = {
-					-- Defaults
-					enable_close = true, -- Auto close tags
-					enable_rename = true, -- Auto rename pairs of tags
-					enable_close_on_slash = false, -- Auto close on trailing </
-				},
-				-- Also override individual filetype configs, these take priority.
-				-- Empty by default, useful if one of the "opts" global settings
-				-- doesn't work well in a specific filetype
-				per_filetype = {
-					["html"] = {
-						enable_close = false,
-					},
-				},
-			})
 			-- require('rainbow-delimiters.setup').setup();
 		end,
 	},
