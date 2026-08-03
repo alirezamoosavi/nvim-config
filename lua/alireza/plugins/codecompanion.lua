@@ -10,7 +10,7 @@ return {
 		require("codecompanion").setup({
 			strategies = {
 				chat = {
-					adapter = "llamacpp",
+					adapter = "omniroute",
 					opts = {
 						completion_provider = "blink", -- blink
 					},
@@ -21,14 +21,25 @@ return {
 					},
 				},
 				inline = {
-					adapter = "llamacpp",
+					adapter = "omniroute",
 				},
 				cmd = {
-					adapter = "llamacpp",
+					adapter = "omniroute",
 				},
 			},
 			adapters = {
 				http = {
+					omniroute = function()
+						return require("codecompanion.adapters").extend("openai_compatible", {
+							env = {
+								url = "http://192.168.100.211:20130/v1",
+                api_key = "sk-f9e2742a7160d853-e7a6d1-6ac7ff1e",
+							},
+							parameters = {
+								sync = true,
+							},
+						})
+					end,
 					ollama = function()
 						return require("codecompanion.adapters").extend("ollama", {
 							env = {
