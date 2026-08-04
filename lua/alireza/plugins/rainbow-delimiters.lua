@@ -1,5 +1,6 @@
 return {
   "hiphish/rainbow-delimiters.nvim",
+  submodules = false,
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   config = function()
     -- تنظیمات ساده و پیش‌فرض
